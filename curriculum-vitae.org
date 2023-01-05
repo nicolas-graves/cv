@@ -1,52 +1,5 @@
 * Config/Preamble :noexport:
 ** LaTeX Config
-#+BEGIN_SRC emacs-lisp :exports none  :results none :eval always
-(setq org-latex-logfiles-extensions (quote ("lof" "lot" "tex~" "aux" "idx" "log" "out" "toc" "nav" "snm" "vrb" "dvi" "fdb_latexmk" "blg" "brf" "fls" "entoc" "ps" "spl" "bbl" "xmpi" "run.xml" "bcf")))
-(add-to-list 'org-latex-classes
-             '("altacv" "\\documentclass[10pt,a4paper,ragged2e,withhyper]{altacv}
-
-% Change the page layout if you need to
-\\geometry{left=1.25cm,right=1.25cm,top=1.5cm,bottom=1.5cm,columnsep=1.2cm}
-
-% Use roboto and lato for fonts
-\\renewcommand{\\familydefault}{\\sfdefault}
-
-% Change the colours if you want to
-\\definecolor{SlateGrey}{HTML}{2E2E2E}
-\\definecolor{LightGrey}{HTML}{666666}
-\\definecolor{DarkPastelRed}{HTML}{450808}
-\\definecolor{PastelRed}{HTML}{8F0D0D}
-\\definecolor{GoldenEarth}{HTML}{E7D192}
-\\colorlet{name}{black}
-\\colorlet{tagline}{PastelRed}
-\\colorlet{heading}{DarkPastelRed}
-\\colorlet{headingrule}{GoldenEarth}
-\\colorlet{subheading}{PastelRed}
-\\colorlet{accent}{PastelRed}
-\\colorlet{emphasis}{SlateGrey}
-\\colorlet{body}{LightGrey}
-
-% Change some fonts, if necessary
-\\renewcommand{\\namefont}{\\Huge\\rmfamily\\bfseries}
-\\renewcommand{\\personalinfofont}{\\footnotesize}
-\\renewcommand{\\cvsectionfont}{\\LARGE\\rmfamily\\bfseries}
-\\renewcommand{\\cvsubsectionfont}{\\large\\bfseries}
-
-% Change the bullets for itemize and rating marker
-% for \cvskill if you want to
-\\renewcommand{\\itemmarker}{{\\small\\textbullet}}
-\\renewcommand{\\ratingmarker}{\\faCircle}
-"
-
-               ("\\cvsection{%s}" . "\\cvsection*{%s}")
-               ("\\cvevent{%s}" . "\\cvevent*{%s}")))
-(setq org-latex-packages-alist 'nil)
-(setq org-latex-default-packages-alist
-      '(("rm" "roboto"  t)
-        ("defaultsans" "lato" t)
-        ("" "paracol" t)
-        ))
-#+END_SRC
 #+LATEX_CLASS: altacv
 #+LATEX_HEADER: \columnratio{0.6} % Set the left/right column width ratio to 6:4.
 #+LATEX_HEADER: \usepackage[bottom]{footmisc}
@@ -479,5 +432,55 @@ Each year, as part of Formula Student, students design, build and race a single 
 \end{document}
 #+end_export
 
+Local Variables:
+eval: (setq org-latex-logfiles-extensions (quote ("lof" "lot" "tex~" "aux" "idx" "log" "out" "toc" "nav" "snm" "vrb" "dvi" "fdb_latexmk" "blg" "brf" "fls" "entoc" "ps" "spl" "bbl" "xmpi" "run.xml" "bcf")))
+eval: (add-to-list 'org-latex-classes
+             '("altacv" "
+\\documentclass[10pt,a4paper,ragged2e,withhyper]{altacv}
 
+% Change the page layout if you need to
+\\geometry{left=1.25cm,right=1.25cm,top=1.5cm,bottom=1.5cm,columnsep=1.2cm}
 
+% Use roboto and lato for fonts
+\\renewcommand{\\familydefault}{\\sfdefault}
+
+% Change the colours if you want to
+\\definecolor{SlateGrey}{HTML}{2E2E2E}
+\\definecolor{LightGrey}{HTML}{666666}
+\\definecolor{DarkPastelRed}{HTML}{450808}
+\\definecolor{PastelRed}{HTML}{8F0D0D}
+\\definecolor{GoldenEarth}{HTML}{E7D192}
+\\colorlet{name}{black}
+\\colorlet{tagline}{PastelRed}
+\\colorlet{heading}{DarkPastelRed}
+\\colorlet{headingrule}{GoldenEarth}
+\\colorlet{subheading}{PastelRed}
+\\colorlet{accent}{PastelRed}
+\\colorlet{emphasis}{SlateGrey}
+\\colorlet{body}{LightGrey}
+
+% Change some fonts, if necessary
+\\renewcommand{\\namefont}{\\Huge\\rmfamily\\bfseries}
+\\renewcommand{\\personalinfofont}{\\footnotesize}
+\\renewcommand{\\cvsectionfont}{\\LARGE\\rmfamily\\bfseries}
+\\renewcommand{\\cvsubsectionfont}{\\large\\bfseries}
+
+% Change the bullets for itemize and rating marker
+% for \cvskill if you want to
+\\renewcommand{\\itemmarker}{{\\small\\textbullet}}
+\\renewcommand{\\ratingmarker}{\\faCircle}
+"
+
+               ("\\cvsection{%s}" . "\\cvsection*{%s}")
+               ("\\cvevent{%s}" . "\\cvevent*{%s}")))
+eval: (setq org-latex-packages-alist 'nil)
+eval: (setq org-latex-default-packages-alist
+      '(("rm" "roboto"  t)
+        ("defaultsans" "lato" t)
+        ("" "paracol" t)
+        ))
+eval: (setq org-latex-pdf-process
+              '("guix time-machine --channels=channels.scm -- shell -m manifest.scm -- lualatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+                "guix time-machine --channels=channels.scm -- shell -m manifest.scm -- lualatex -shell-escape -interaction nonstopmode -output-directory %o %f"
+                "guix time-machine --channels=channels.scm -- shell -m manifest.scm -- lualatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
+End:
